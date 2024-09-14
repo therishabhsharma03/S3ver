@@ -59,28 +59,25 @@ Follow these steps to set up S3ver:
    ```
    cd frontend
    npm install
-   npm run build
    ```
 
    b. S3ver-upload-service
    ```
    cd ../S3ver-upload-service
    npm install
-   npm run build
+
    ```
 
    c. S3ver-deploy-service
    ```
    cd ../S3ver-deploy-service
    npm install
-   npm run build
    ```
 
    d. S3ver-request-handler
    ```
    cd ../S3ver-request-handler
    npm install
-   npm run build
    ```
 
 ## Configuration
@@ -104,24 +101,28 @@ Follow these steps to set up S3ver:
    a. Frontend
    ```
    cd frontend
+   tsc -b
    npm run dev
    ```
 
    b. S3ver-upload-service
    ```
    cd ../S3ver-upload-service
+   tsc -b
    node dist/index.js
    ```
 
    c. S3ver-deploy-service
    ```
    cd ../S3ver-deploy-service
+   tsc -b
    node dist/index.js
    ```
 
    d. S3ver-request-handler
    ```
    cd ../S3ver-request-handler
+   tsc -b
    node dist/index.js
    ```
 
