@@ -10,8 +10,7 @@
 7. [Usage](#usage)
 8. [Troubleshooting](#troubleshooting)
 9. [Contributing](#contributing)
-10. [License](#license)
-11. [Contact](#contact)
+10. [Contact](#contact)
 
 ## Project Overview
 
@@ -142,7 +141,7 @@ If you encounter issues:
 
 ## Contributing
 
-We welcome contributions to S3ver! Please follow these steps:
+I welcome contributions to S3ver! Please follow these steps:
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
 3. Make your changes and test thoroughly.
@@ -150,12 +149,8 @@ We welcome contributions to S3ver! Please follow these steps:
 
 Please adhere to the existing code style and include appropriate tests for new features.
 
-## License
-
-[Specify your license here]
-
 ## Contact
 
-For questions, feedback, or support, please contact [Your Contact Information].
+For questions, feedback, or support, please contact therishabhsharma03@gmail.com .
 
 Thank you for using S3ver!
