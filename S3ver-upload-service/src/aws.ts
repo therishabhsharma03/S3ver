@@ -1,20 +1,43 @@
-import { S3 } from "aws-sdk";
-import fs from "fs";
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import fs from 'fs';
+import path from 'path';
+require('dotenv').config();
+// Hardcoded SQS queue URL
+// const QUEUE_URL = "https://sqs.ap-south-1.amazonaws.com/121933364261/server.fifo";
+const ACCESS_KEY = process.env.ACCESS_KEY;
+const SECRET_KEY = process.env.SECRET_KEY;
+// Hardcoded S3 endpoint URL
+const S3_ENDPOINT = "https://s3.ap-south-1.amazonaws.com";
 
-const s3 = new S3({
-    accessKeyId: "7ea9c3f8c7f0f26f0d21c5ce99d1ad6a",
-    secretAccessKey: "b4df203781dd711223ce931a2d7ca269cdbf81bb530de4548474584951b798be",
-    endpoint: "https://e21220f4758c0870ba9c388712d42ef2.r2.cloudflarestorage.com"
-})
+// Initialize SQS client
+// const sqsClient = new SQSClient({ region: "ap-south-1" });
 
-// fileName => output/12312/src/App.jsx
-// filePath => /Users/harkiratsingh/vercel/dist/output/12312/src/App.jsx
+// Initialize S3 client with access point
+const s3Client = new S3Client({
+    region: "ap-south-1",
+    credentials: {
+        accessKeyId: ACCESS_KEY as string,  // Hardcoded access key
+        secretAccessKey: SECRET_KEY as string // Hardcoded secret key
+    },
+    endpoint: S3_ENDPOINT
+});
+
 export const uploadFile = async (fileName: string, localFilePath: string) => {
-    const fileContent = fs.readFileSync(localFilePath);
-    const response = await s3.upload({
-        Body: fileContent,
-        Bucket: "vercel",
-        Key: fileName,
-    }).promise();
-    console.log(response);
+    try {
+        const fileContent = fs.readFileSync(localFilePath);
+        
+        // Create a command to upload the file
+        const command = new PutObjectCommand({
+            Bucket: 's3verrr',
+            Key: fileName,
+            Body: fileContent,
+        });
+
+        // Send the command to S3
+        const response = await s3Client.send(command);
+        
+        console.log(response);
+    } catch (error) {
+        console.error('Error uploading file:', error);
+    }
 }
