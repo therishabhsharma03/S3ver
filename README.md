@@ -45,7 +45,7 @@ S3ver consists of four main components:
 
 ## Installation
 
-Follow these steps to set up S3ver:
+Follow these steps to set up S3ver :
 
 1. Clone the repository:
    ```
